@@ -1,0 +1,162 @@
+@use "/assets/css/variables" as color;
+
+body {
+	background-color: color.$black;
+	color: color.$white;
+	font-family: "Jost", sans-serif;
+	font-weight: 400;
+}
+
+a {
+	color: inherit;
+	text-decoration: underline;
+
+	&:hover {
+		text-decoration: none;
+	}
+}
+
+img {
+	max-width: 100%;
+}
+
+.header {
+	display: flex;
+	justify-content: space-between;
+	padding: 1rem;
+	gap: 1rem;
+	align-items: center;
+
+	&-logo {
+		display: flex;
+		align-items: center;
+		gap: 2rem;
+
+		img {
+			max-width: 100px;
+		}
+
+		&-title {
+			font-size: 1.5rem;
+			display: none;
+		}
+	}
+
+	&-buttons {
+		display: flex;
+		gap: 1rem;
+		align-items: center;
+
+		a {
+			padding: 1rem 0.5rem;
+			border-radius: 0.5rem;
+			text-decoration: none;
+			transition: opacity 0.2s;
+
+			&:hover {
+				background-color: #fff;
+				opacity: 0.5;
+			}
+		}
+	}
+
+	@media (min-width: 768px) {
+		&-logo {
+			img {
+				max-width: 100%;
+			}
+
+			&-title {
+				display: block;
+			}
+		}
+	}
+}
+
+.section-title {
+	padding: 0 1rem;
+	text-align: center;
+	font-size: 1.5rem;
+	margin-bottom: 1rem;
+
+	#top-text {
+		&::before {
+			content: "3";
+			font-weight: 700;
+		}
+	}
+
+	@media (min-width: 768px) {
+		text-align: left;
+	}
+
+	@media (min-width: 1024px) {
+		#top-text {
+			&::before {
+				content: "5";
+			}
+		}
+	}
+}
+
+.item {
+	transition: transform 0.2s;
+	will-change: transform;
+	cursor: pointer;
+	position: relative;
+
+	&:hover {
+		z-index: 9;
+		transform: scale(1.1);
+	}
+}
+
+.top {
+	display: grid;
+	padding: 0 1rem;
+	justify-content: center;
+	gap: 1rem;
+	margin-bottom: 3rem;
+
+	@media (max-width: 1023px) {
+		> *:nth-child(n + 4) {
+			display: none;
+		}
+	}
+
+	@media (min-width: 768px) {
+		grid-template-columns: repeat(3, 1fr);
+	}
+
+	@media (min-width: 1024px) {
+		grid-template-columns: repeat(5, 1fr);
+	}
+}
+
+.first,
+.second {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+	gap: 0.25rem;
+	padding: 1rem;
+
+	img {
+		display: block;
+		margin: 0 auto;
+		width: 100%;
+	}
+
+	@media (min-width: 768px) {
+		grid-template-columns: repeat(4, 1fr);
+	}
+
+	@media (min-width: 768px) and (max-width: 1279px) {
+		.item:nth-child(n + 5) {
+			grid-column: span 2;
+		}
+	}
+
+	@media (min-width: 1280px) {
+		grid-template-columns: repeat(6, 1fr);
+	}
+}
